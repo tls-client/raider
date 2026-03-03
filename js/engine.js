@@ -1,35 +1,39 @@
-import { state } from "./state.js";
-import { log } from "./ui.js";
+import {state} from "./state.js";
+import {log} from "./logger.js";
 
-const sleep = ms =>
-  new Promise(r => setTimeout(r, ms));
+const sleep=ms=>new Promise(r=>setTimeout(r,ms));
 
-export async function startEngine() {
+export async function start(){
 
-  if (state.running) return;
+ if(state.running)return;
 
-  state.running = true;
-  log("Started");
+ state.running=true;
+ log("実行開始");
 
-  while (state.running) {
+ let count=0;
 
-    await executeTask();
+ while(state.running){
 
-    await sleep(state.config.delay);
+  log("処理ループ実行");
+
+  count++;
+
+  if(
+   state.config.limit &&
+   count>=state.config.limit
+  ){
+   break;
   }
 
-  log("Stopped");
-}
-
-export function stopEngine() {
-  state.running = false;
-}
-
-async function executeTask() {
-
-  // 🔥 ここが拡張ポイント
-  log(
-    `Running → ${state.config.target} : ${state.config.message}`
+  await sleep(
+   state.config.delay*1000
   );
+ }
 
+ state.running=false;
+ log("停止");
+}
+
+export function stop(){
+ state.running=false;
 }
