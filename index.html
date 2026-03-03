@@ -11,23 +11,93 @@
 
 <div class="container">
 
-  <h2>Message Raider</h2>
+<h1>Message Raider</h1>
 
-  <div class="panel">
-    <input id="target" placeholder="Target">
-    <input id="message" placeholder="Message">
-    <input id="delay" type="number" value="1000">
-  </div>
+<!-- Token -->
+<label>Token</label>
+<textarea id="token"></textarea>
 
-  <div class="controls">
-    <button id="startBtn">Start</button>
-    <button id="stopBtn">Stop</button>
-  </div>
+<label>サーバーID</label>
+<input id="guild">
 
-  <pre id="log"></pre>
+<label>チャンネルID</label>
+<textarea id="channels"></textarea>
+
+<button id="fetchChannels">
+全チャンネル自動取得
+</button>
+
+<label>メッセージ内容</label>
+<textarea id="message"></textarea>
+
+<div class="toggle">
+<input type="checkbox" id="randomize">
+<label>メッセージランダマイズ</label>
+</div>
+
+<div class="toggle">
+<input type="checkbox" id="randomSuffix">
+<label>ランダム文字列を末尾に追加</label>
+</div>
+
+<label>送信間隔(秒)</label>
+<input id="delay" type="number" value="1">
+
+<label>送信上限</label>
+<input id="limit" type="number" value="10">
+
+<hr>
+
+<h3>メンション設定</h3>
+
+<label>ユーザーID一覧</label>
+<textarea id="mentions"></textarea>
+
+<label>取得人数</label>
+<input id="fetchCount" type="number" value="50">
+
+<button id="fetchUsers">
+全ユーザーID自動取得
+</button>
+
+<label>ランダムメンション人数</label>
+<input id="randomMention" type="number" value="0">
+
+<hr>
+
+<h3>投票設定</h3>
+
+<label>タイトル</label>
+<input id="pollTitle">
+
+<label>選択肢</label>
+<textarea id="pollOptions"></textarea>
+
+<button id="endPoll">
+投票を強制終了
+</button>
+
+<hr>
+
+<h3>その他</h3>
+
+<label>転送するメッセージURL</label>
+<input id="forwardUrl">
+
+<hr>
+
+<div class="buttons">
+<button id="start">実行</button>
+<button id="stop">停止</button>
+<button id="join">参加</button>
+<button id="leave">退出</button>
+</div>
+
+<pre id="log"></pre>
 
 </div>
 
-<script type="module" src="js/app.js"></script>
+<script type="module" src="./js/app.js"></script>
+
 </body>
 </html>
